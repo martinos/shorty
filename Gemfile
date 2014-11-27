@@ -42,3 +42,6 @@ gem 'devise'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :test do
+  gem 'factory_girl_rails'
+end
