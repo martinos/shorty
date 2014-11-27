@@ -28,6 +28,8 @@ gem 'haml-rails'
 gem 'foundation-rails'
 gem 'mongoid'
 gem 'bson_ext'
+gem 'devise'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
