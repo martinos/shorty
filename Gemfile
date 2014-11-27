@@ -26,7 +26,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 #
 gem 'haml-rails'
 gem 'foundation-rails'
-
+gem 'mongoid'
+gem 'bson_ext'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
