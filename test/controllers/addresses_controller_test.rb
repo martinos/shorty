@@ -2,6 +2,8 @@ require 'test_helper'
 
 class AddressesControllerTest < ActionController::TestCase
   setup do
+    me = create(:user)
+    sign_in me
     @address = create(:address) 
   end
 
