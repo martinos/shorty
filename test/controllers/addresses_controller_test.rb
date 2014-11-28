@@ -51,17 +51,17 @@ describe AddressesController do
     end
   end
 
-  # describe "with no user signed in" do
-  #   setup do
-  #     @address = build(:address) 
-  #   end
+  describe "with no user signed in" do
+    setup do
+      @address = build(:address) 
+    end
 
-  #   it "should not create an address" do
-  #     assert_no_difference('Address.count') do
-  #       post :create, address: { url: @address.url  } 
-  #     end
+    it "should not create an address and redirect to login" do
+      assert_no_difference('Address.count') do
+        post :create, address: { url: @address.url  } 
+      end
       
-  #     assert_response :forbidden
-  #   end
-  # end
+      assert_redirected_to new_user_session_path
+    end
+  end
 end
