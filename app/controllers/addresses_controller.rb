@@ -14,11 +14,6 @@ class AddressesController < ApplicationController
     respond_with(@address)
   end
 
-  def new
-    @address = Address.new
-    respond_with(@address)
-  end
-
   def create
     @address = current_user.addresses.build(address_params)
     authorize @address

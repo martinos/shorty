@@ -15,16 +15,11 @@ describe AddressesController do
       assert_not_nil assigns(:addresses)
     end
 
-    it "should get new" do
-      get :new
-      assert_response :success
-    end
-
     it "should create address" do
       assert_difference('Address.count') do
         post :create, address: { url: @address.url, user_id: @me.id}
       end
-      assert_redirected_to address_path(assigns(:address))
+      assert_redirected_to addresses_path
     end
 
     it "should show address" do
@@ -55,7 +50,7 @@ describe AddressesController do
       assert_no_difference('Address.count') do
         post :create, address: { url: @address.url  } 
       end
-      
+
       assert_redirected_to new_user_session_path
     end
   end

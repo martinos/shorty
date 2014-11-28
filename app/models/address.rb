@@ -13,7 +13,7 @@ class Address
     root_url = case Rails.env
       when 'production'
         'http://shortly.com/'
-      when 'development'
+      else
         'http://localhost:3000/'
       end
     root_url + self.short_path
