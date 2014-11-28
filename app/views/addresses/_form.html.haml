@@ -1,3 +1,5 @@
+%h1
+  Url Shortner
 = form_for @address do |f|
   - if @address.errors.any?
     #error_explanation
@@ -5,9 +7,12 @@
       %ul
         - @address.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :url
-    = f.url_field :url
-  .actions
-    = f.submit 'Save'
+  .row
+    .large-12.columns
+      .row.collapse
+        .small-10.columns
+          = f.url_field :url, {placeholder: 'http://'}
+        .small-2.columns
+          -# %a.button.postfix{:href => "#"} Add
+          = f.submit 'shorten', {:class => 'button postfix'}
+    

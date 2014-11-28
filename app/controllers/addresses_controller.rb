@@ -5,6 +5,7 @@ class AddressesController < ApplicationController
   respond_to :html, :json
 
   def index
+    @address = Address.new
     @addresses = current_user.addresses
     respond_with(@addresses)
   end
