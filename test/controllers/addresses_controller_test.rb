@@ -6,7 +6,7 @@ describe AddressesController do
       @me = create(:user)
       @bob = create(:user)
       sign_in @me
-      @address = create(:address, user_id: @me.id) 
+      @address = create(:address, user_id: @me.id, url: 'http://example.com') 
     end
 
     it "should get index" do

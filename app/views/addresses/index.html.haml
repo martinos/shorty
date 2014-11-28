@@ -1,15 +1,13 @@
 %h1 Listing addresses
 
 %table
-  %tr
-    %th Url
-    %th
-    %th
-    %th
-
-  - @addresses.each do |address|
+  %thead
     %tr
-      %td= address.url
+      %th Url
+  %tbody
+    - @addresses.each do |address|
+      %tr
+        %td= address.url
 
 %br
 

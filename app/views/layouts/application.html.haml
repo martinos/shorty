@@ -31,9 +31,9 @@
           %ul.right
             %li
               = link_to "Sign in", new_user_session_path, :class => "btn"
-    .container
+    %section.scroll-container{role: "main"}
       .row
-        .main-column
+        .main-column.large-9.medium-8.columns
           - flash.each do |name, msg|
             %div{:class => "alert-box #{name == 'notice' ? "success" : "alert"} radius", "data-alert" => ""}
               = msg
