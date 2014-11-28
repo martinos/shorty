@@ -2,10 +2,10 @@ class AddressesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_address, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
-    @addresses = Address.all
+    @addresses = current_user.addresses
     respond_with(@addresses)
   end
 
@@ -18,31 +18,26 @@ class AddressesController < ApplicationController
     respond_with(@address)
   end
 
-  def edit
-  end
-
   def create
-    @address = Address.new(address_params)
+    @address = current_user.addresses.build(address_params)
+    authorize @address
     @address.save
     respond_with(@address)
   end
 
-  def update
-    @address.update(address_params)
-    respond_with(@address)
-  end
-
   def destroy
+    authorize @address
     @address.destroy
     respond_with(@address)
   end
 
   private
+
     def set_address
       @address = Address.find(params[:id])
     end
 
     def address_params
-      params.require(:address).permit(:url, :user_id)
+      params.require(:address).permit(:url)
     end
 end

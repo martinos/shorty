@@ -1,11 +1,12 @@
 require 'test_helper'
 
 describe AddressesController do
-  describe "with one user sign in" do
+  describe "Given that I am signed in" do
     setup do
       @me = create(:user)
+      @bob = create(:user)
       sign_in @me
-      @address = create(:address, user: @me) 
+      @address = create(:address, user_id: @me.id) 
     end
 
     it "should get index" do
@@ -21,9 +22,8 @@ describe AddressesController do
 
     it "should create address" do
       assert_difference('Address.count') do
-        post :create, address: { url: @address.url }
+        post :create, address: { url: @address.url, user_id: @me.id}
       end
-
       assert_redirected_to address_path(assigns(:address))
     end
 
@@ -35,11 +35,6 @@ describe AddressesController do
     it "should get edit" do
       get :edit, id: @address
       assert_response :success
-    end
-
-    it "should update address" do
-      patch :update, id: @address, address: { url: @address.url }
-      assert_redirected_to address_path(assigns(:address))
     end
 
     it "should destroy address" do
