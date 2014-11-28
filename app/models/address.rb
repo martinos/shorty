@@ -9,6 +9,11 @@ class Address
 
   before_create :generate_short_path
 
+  def short_url
+    root_url = "http://shorty.co/s/"
+    short_url + self.short_path
+  end
+
   private
 
     def generate_short_path
