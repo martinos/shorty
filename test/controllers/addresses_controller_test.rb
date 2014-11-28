@@ -31,14 +31,6 @@ describe AddressesController do
       get :edit, id: @address
       assert_response :success
     end
-
-    it "should destroy address" do
-      assert_difference('Address.count', -1) do
-        delete :destroy, id: @address
-      end
-
-      assert_redirected_to addresses_path
-    end
   end
 
   describe "with no user signed in" do
@@ -52,6 +44,13 @@ describe AddressesController do
       end
 
       assert_redirected_to new_user_session_path
+    end
+
+    it 'should redirect the user to the resolved short url' do
+      @address.url = "http://www/example.com"
+      @address.save!
+      get :short, id: @address.short_path
+      assert_redirected_to @address.url
     end
   end
 end

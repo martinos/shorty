@@ -1,6 +1,6 @@
 class AddressesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_address, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:short]
+  before_action :set_address, only: [:show, :edit, :update]
 
   respond_to :html, :json
 
@@ -29,11 +29,10 @@ class AddressesController < ApplicationController
       end
     end
   end
-
-  def destroy
-    authorize @address
-    @address.destroy
-    respond_with(@address)
+  
+  def short
+    @address = Address.where(:short_path => params[:id]).first
+    redirect_to @address.url
   end
 
   private
