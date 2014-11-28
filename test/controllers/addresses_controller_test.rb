@@ -42,15 +42,20 @@ describe AddressesController do
       assert_no_difference('Address.count') do
         post :create, address: { url: @address.url  } 
       end
-
       assert_redirected_to new_user_session_path
     end
 
-    it 'should redirect the user to the resolved short url' do
+    it 'should redirect resolved short url' do
       @address.url = "http://www/example.com"
       @address.save!
+
       get :short, id: @address.short_path
       assert_redirected_to @address.url
+    end
+
+    it 'should return 404 if short url does not exist' do
+      get :short, id: 'doesnotexist' 
+      assert_response :not_found
     end
   end
 end

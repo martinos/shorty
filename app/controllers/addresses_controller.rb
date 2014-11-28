@@ -32,7 +32,11 @@ class AddressesController < ApplicationController
   
   def short
     @address = Address.where(:short_path => params[:id]).first
-    redirect_to @address.url
+    if @address
+      redirect_to @address.url
+    else
+      render :file => "#{Rails.root}/public/404.html",  :status => 404
+    end
   end
 
   private
