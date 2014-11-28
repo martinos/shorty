@@ -3,7 +3,6 @@
 %table
   %tr
     %th Url
-    %th User
     %th
     %th
     %th
@@ -11,10 +10,6 @@
   - @addresses.each do |address|
     %tr
       %td= address.url
-      %td= address.user_id
-      %td= link_to 'Show', address
-      %td= link_to 'Edit', edit_address_path(address)
-      %td= link_to 'Destroy', address, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
