@@ -33,6 +33,8 @@ class AddressesController < ApplicationController
   def short
     @address = Address.where(:short_path => params[:id]).first
     if @address
+      @address.access_count += 1
+      @address.save!
       redirect_to @address.url
     else
       render :file => "#{Rails.root}/public/404.html",  :status => 404

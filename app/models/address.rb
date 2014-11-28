@@ -6,6 +6,7 @@ class Address
 
   field :url, type: String
   field :short_path, type: String
+  field :access_count, type: Integer, default: 0
 
   before_create :generate_short_path
 

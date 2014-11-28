@@ -5,9 +5,11 @@
     %tr
       %th Url
       %th Short Url
+      %th Clicks 
   %tbody
     - @addresses.each do |address|
       %tr
         %td= address.url
         %td= link_to address.short_url, address.short_url
+        %td= address.access_count
 %br
