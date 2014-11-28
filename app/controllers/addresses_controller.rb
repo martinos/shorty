@@ -22,8 +22,17 @@ class AddressesController < ApplicationController
   def create
     @address = current_user.addresses.build(address_params)
     authorize @address
-    @address.save
-    respond_with(@address)
+
+    respond_to do |format|
+      if @address.save
+        flash[:notice] = "Short address #{@address.short_url}" 
+        format.html { redirect_to action: :index }
+        format.json { render json: @address }
+      else
+        format.html { render action: "new" }
+        format.xml { render json: @address }
+      end
+    end
   end
 
   def destroy
