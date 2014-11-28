@@ -1,18 +1,18 @@
 %h1
   Url Shortner
-= form_for @address do |f|
-  - if @address.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@address.errors.count, "error")} prohibited this address from being saved:"
-      %ul
-        - @address.errors.full_messages.each do |msg|
-          %li= msg
-  .row
-    .large-12.columns
-      .row.collapse
-        .small-10.columns
-          = f.url_field :url, {placeholder: 'http://'}
-        .small-2.columns
-          -# %a.button.postfix{:href => "#"} Add
-          = f.submit 'shorten', {:class => 'button postfix'}
-    
+.panel
+  = form_for @address do |f|
+    - if @address.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@address.errors.count, "error")} prohibited this address from being saved:"
+        %ul
+          - @address.errors.full_messages.each do |msg|
+            %li= msg
+    .row
+      .large-12.columns
+        .row.collapse
+          .small-10.columns
+            = f.url_field :url, {placeholder: 'http://'}
+          .small-2.columns
+            = f.submit 'shorten', {:class => 'button postfix'}
+      

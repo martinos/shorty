@@ -4,9 +4,10 @@
   %thead
     %tr
       %th Url
+      %th Short Url
   %tbody
     - @addresses.each do |address|
       %tr
         %td= address.url
-
+        %td= link_to address.short_url', address.short_url
 %br
