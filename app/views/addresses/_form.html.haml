@@ -15,4 +15,7 @@
             = f.url_field :url, {placeholder: 'http://'}
           .small-2.columns
             = f.submit 'shorten', {:class => 'button postfix'}
+    .row.hide.shorturl
+      .large-10.columns
+        .alert-box.success.radius{"data-alert" => ""}
       

@@ -1,1 +1,7 @@
-$("<%= escape_javascript(render @address) %>").appendTo("#addresses");
+$("<%= escape_javascript(render @address) %>").prependTo("#addresses");
+
+var shortUrl = $(".shorturl");
+
+shortUrl.find('.alert-box').html("Short URL: <a href=\"<%= @address.short_url %>\"><%= @address.short_url %></a>");
+  
+shortUrl.removeClass('hide');

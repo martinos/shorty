@@ -6,7 +6,7 @@ class AddressesController < ApplicationController
 
   def index
     @address = Address.new
-    @addresses = current_user.addresses
+    @addresses = current_user.addresses.order_by("created_at DESC")
     respond_with(@addresses)
   end
 
@@ -20,7 +20,6 @@ class AddressesController < ApplicationController
 
     respond_to do |format|
       if @address.save
-        flash[:notice] = "Short address #{@address.short_url}" 
         format.html { redirect_to action: :index }
         format.json { render json: @address }
         format.js { }

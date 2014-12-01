@@ -2,6 +2,8 @@ require 'digest/sha1'
 
 class Address
   include Mongoid::Document
+  include Mongoid::Timestamps
+
   belongs_to :user
 
   field :url, type: String
