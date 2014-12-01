@@ -1,7 +1,7 @@
 %h1
   Url Shortner
 .panel
-  = form_for @address do |f|
+  = form_for @address, remote: true do |f|
     - if @address.errors.any?
       #error_explanation
         %h2= "#{pluralize(@address.errors.count, "error")} prohibited this address from being saved:"

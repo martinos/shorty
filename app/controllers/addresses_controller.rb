@@ -23,6 +23,7 @@ class AddressesController < ApplicationController
         flash[:notice] = "Short address #{@address.short_url}" 
         format.html { redirect_to action: :index }
         format.json { render json: @address }
+        format.js { }
       else
         format.html { render action: "new" }
         format.xml { render json: @address }
